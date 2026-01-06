@@ -1,10 +1,6 @@
 # Core dependencies
-numpy==2.2.6
-pandas==2.3.3
-python-dateutil==2.9.0.post0
-pytz==2025.2
-six==1.17.0
-tzdata==2025.2
+numpy>=2.0.0
+pandas>=2.0.0
 
 # Streamlit
 streamlit>=1.29.0
@@ -17,9 +13,14 @@ torch>=2.0.0
 spacy>=3.7.0,<3.8.0
 scispacy>=0.5.4
 
+# ChromaDB - Vector Database (for optimized NER)
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# Progress bars
+tqdm>=4.65.0
+
 # Visualization
 plotly>=5.18.0
 
-# Note: ScispaCy models must be installed separately:
-# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_scibert-0.5.4.tar.gz
-# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz
+# Note: ScispaCy models must be installed separately (see setup.sh)
