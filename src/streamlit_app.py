@@ -1,326 +1,181 @@
 """
-Asistente Clínico Inteligente y Explicable (ACIE)
-==================================================
-Streamlit application for clinical assistant with multiple sprints.
-
-Main entry point with bilingual support and sprint navigation.
+ACIE - Asistente Clínico Inteligente y Explicable
+=================================================
+Professional Streamlit UI with native elements only.
+Optimized for performance with lazy loading.
 """
 
 import streamlit as st
-from pages import sprint_1_triaje, sprint_2_ner, sprint_3_soap, sprint_4_rag
 
-
-# Page configuration
+# Page configuration - MUST be first Streamlit command
 st.set_page_config(
-    page_title="ACIE - Asistente Clínico Inteligente",
+    page_title="ACIE - Asistente Clínico",
     page_icon="🏥",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Translations dictionary
-TRANSLATIONS = {
-    'es': {
-        # General
-        'app_title': 'Asistente Clínico Inteligente y Explicable',
-        'app_subtitle': 'Sistema de IA para apoyo clínico - UPCH',
-        'select_language': 'Seleccionar Idioma',
-        'project_info': 'Información del Proyecto',
-        'sprint_navigation': 'Navegación por Sprints',
-        'project_progress': 'Progreso del Proyecto',
-        'completed': 'Completado',
-        'in_progress': 'En Progreso',
-        'pending': 'Pendiente',
-        
-        # Sprint titles
-        'sprint1_title': 'Triaje Zero-Shot',
-        'sprint2_title': 'NER y Estructuración',
-        'sprint3_title': 'Generador SOAP',
-        'sprint4_title': 'RAG Guías Clínicas',
-        
-        # Sprint 1
-        'configuration': 'Configuración',
-        'use_custom_labels': 'Usar etiquetas personalizadas',
-        'custom_labels_help': 'Activar para definir tus propias categorías de triaje',
-        'enter_labels': 'Ingresa las etiquetas (separadas por comas)',
-        'labels_placeholder': 'Ej: Urgencia Alta, Urgencia Media, Urgencia Baja, No Urgente',
-        'labels_help': 'Define categorías claras y diferenciadas',
-        'no_labels_warning': '⚠️ Debes ingresar al menos una etiqueta',
-        'default_labels': 'Etiquetas predefinidas',
-        'confidence_threshold': 'Umbral de Confianza',
-        'threshold_help': 'Clasificaciones por debajo de este umbral se marcarán como de baja confianza',
-        'current_threshold': 'Umbral actual',
-        
-        # Input
-        'input_messages': 'Ingreso de Mensajes',
-        'single_message': 'Mensaje Individual',
-        'multiple_messages': 'Múltiples Mensajes',
-        'examples': 'Ejemplos',
-        'enter_message': 'Escribe el mensaje del paciente',
-        'message_placeholder': 'Ej: Tengo un dolor fuerte en el pecho...',
-        'classify_button': '🔍 Clasificar',
-        'empty_message_warning': '⚠️ Por favor ingresa al menos un mensaje',
-        'enter_multiple': 'Ingresa múltiples mensajes (uno por línea)',
-        'multiple_placeholder': 'Mensaje 1\nMensaje 2\nMensaje 3...',
-        'multiple_help': 'Cada línea será clasificada como un mensaje separado',
-        'examples_info': 'Selecciona uno o más mensajes de ejemplo para clasificar:',
-        'classify_selected': '🔍 Clasificar Seleccionados',
-        'no_examples_warning': '⚠️ Selecciona al menos un ejemplo',
-        
-        # Results
-        'results': 'Resultados',
-        'classifying': '⏳ Clasificando mensajes...',
-        'message': 'Mensaje',
-        'predicted_category': 'Categoría Predicha',
-        'confidence': 'Confianza',
-        'low_confidence': 'Baja confianza',
-        'high_confidence': 'Alta',
-        'acceptable': 'Aceptable',
-        'low': 'Baja',
-        'no_prediction': '❌ No se pudo generar predicción',
-        'probability_distribution': 'Distribución de Probabilidades',
-        'category': 'Categoría',
-        'threshold': 'Umbral',
-        
-        # Export
-        'export_results': 'Exportar Resultados',
-        'download_csv': 'Descargar CSV',
-        'download_json': 'Descargar JSON',
-        
-        # Documentation
-        'what_is_this': '¿Qué es esto?',
-        'ethics_title': 'Consideraciones Éticas',
-        
-        # Sprint 2 NER
-        'abbreviations': 'Abreviaturas',
-        'results': 'Resultados',
-        
-        # Placeholders
-        'coming_soon': 'Próximamente - Esta funcionalidad está en desarrollo',
-        'see_notebook': 'Ver notebook',
-        
-        # About
-        'about_text': '''
-        Este proyecto docente–experimental permite construir un **asistente clínico inteligente y explicable** 
-        usando modelos tipo Transformer y LLM, con énfasis en IA responsable en salud.
-        
-        **Sprints:**
-        1. Triaje de mensajes (Zero-Shot)
-        2. Estructuración de texto clínico (NER → JSON)
-        3. Generación de notas SOAP con auto-auditoría
-        4. Recuperación aumentada (RAG) sobre guías clínicas
-        ''',
-    },
-    'en': {
-        # General
-        'app_title': 'Intelligent and Explainable Clinical Assistant',
-        'app_subtitle': 'AI System for Clinical Support - UPCH',
-        'select_language': 'Select Language',
-        'project_info': 'Project Information',
-        'sprint_navigation': 'Sprint Navigation',
-        'project_progress': 'Project Progress',
-        'completed': 'Completed',
-        'in_progress': 'In Progress',
-        'pending': 'Pending',
-        
-        # Sprint titles
-        'sprint1_title': 'Zero-Shot Triage',
-        'sprint2_title': 'NER and Structuring',
-        'sprint3_title': 'SOAP Generator',
-        'sprint4_title': 'RAG Clinical Guidelines',
-        
-        # Sprint 1
-        'configuration': 'Configuration',
-        'use_custom_labels': 'Use custom labels',
-        'custom_labels_help': 'Enable to define your own triage categories',
-        'enter_labels': 'Enter labels (comma-separated)',
-        'labels_placeholder': 'E.g: High Urgency, Medium Urgency, Low Urgency, Non-Urgent',
-        'labels_help': 'Define clear and differentiated categories',
-        'no_labels_warning': '⚠️ You must enter at least one label',
-        'default_labels': 'Predefined labels',
-        'confidence_threshold': 'Confidence Threshold',
-        'threshold_help': 'Classifications below this threshold will be marked as low confidence',
-        'current_threshold': 'Current threshold',
-        
-        # Input
-        'input_messages': 'Message Input',
-        'single_message': 'Single Message',
-        'multiple_messages': 'Multiple Messages',
-        'examples': 'Examples',
-        'enter_message': 'Enter patient message',
-        'message_placeholder': 'E.g: I have severe chest pain...',
-        'classify_button': '🔍 Classify',
-        'empty_message_warning': '⚠️ Please enter at least one message',
-        'enter_multiple': 'Enter multiple messages (one per line)',
-        'multiple_placeholder': 'Message 1\nMessage 2\nMessage 3...',
-        'multiple_help': 'Each line will be classified as a separate message',
-        'examples_info': 'Select one or more example messages to classify:',
-        'classify_selected': '🔍 Classify Selected',
-        'no_examples_warning': '⚠️ Select at least one example',
-        
-        # Results
-        'results': 'Results',
-        'classifying': '⏳ Classifying messages...',
-        'message': 'Message',
-        'predicted_category': 'Predicted Category',
-        'confidence': 'Confidence',
-        'low_confidence': 'Low confidence',
-        'high_confidence': 'High',
-        'acceptable': 'Acceptable',
-        'low': 'Low',
-        'no_prediction': '❌ Could not generate prediction',
-        'probability_distribution': 'Probability Distribution',
-        'category': 'Category',
-        'threshold': 'Threshold',
-        
-        # Export
-        'export_results': 'Export Results',
-        'download_csv': 'Download CSV',
-        'download_json': 'Download JSON',
-        
-        # Documentation
-        'what_is_this': 'What is this?',
-        'ethics_title': 'Ethical Considerations',
-        
-        # Sprint 2 NER
-        'abbreviations': 'Abbreviations',
-        'results': 'Results',
-        
-        # Placeholders
-        'coming_soon': 'Coming Soon - This feature is under development',
-        'see_notebook': 'See notebook',
-        
-        # About
-        'about_text': '''
-        This experimental teaching project allows building an **intelligent and explainable clinical assistant** 
-        using Transformer and LLM models, with emphasis on responsible AI in healthcare.
-        
-        **Sprints:**
-        1. Message triage (Zero-Shot)
-        2. Clinical text structuring (NER → JSON)
-        3. SOAP note generation with self-auditing
-        4. Retrieval-augmented generation (RAG) over clinical guidelines
-        ''',
-    }
-}
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
 
+SPRINTS = [
+    {"num": 1, "icon": "🎯", "name": "Triaje Zero-Shot", "status": "ready", "color": "green"},
+    {"num": 2, "icon": "🔖", "name": "NER Médico", "status": "ready", "color": "green"},
+    {"num": 3, "icon": "📝", "name": "Generador SOAP", "status": "ready", "color": "green"},
+    {"num": 4, "icon": "💬", "name": "RAG Clínico", "status": "ready", "color": "green"},
+]
 
-def init_session_state():
-    """Initialize session state variables."""
-    if 'language' not in st.session_state:
-        st.session_state.language = 'es'  # Default to Spanish
-    if 'current_sprint' not in st.session_state:
-        st.session_state.current_sprint = 1
+# ============================================================================
+# SESSION STATE
+# ============================================================================
 
+def init_session():
+    """Initialize session state."""
+    if "sprint" not in st.session_state:
+        st.session_state.sprint = 1
+    if "lang" not in st.session_state:
+        st.session_state.lang = "es"
 
-def render_sidebar(translations: dict, lang: str):
-    """Render the sidebar with project info and navigation."""
+# ============================================================================
+# SIDEBAR
+# ============================================================================
+
+def render_sidebar():
+    """Render professional sidebar."""
     with st.sidebar:
-        # Language selector
-        st.markdown("### 🌍 " + translations['select_language'])
+        # Logo/Header
+        st.markdown("## 🏥 ACIE")
+        st.caption("Asistente Clínico Inteligente")
         
+        st.divider()
+        
+        # Language toggle
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("🇪🇸 Español", use_container_width=True, type="primary" if lang == 'es' else "secondary"):
-                st.session_state.language = 'es'
+            if st.button("🇪🇸 ES", use_container_width=True, 
+                        type="primary" if st.session_state.lang == "es" else "secondary"):
+                st.session_state.lang = "es"
                 st.rerun()
         with col2:
-            if st.button("🇬🇧 English", use_container_width=True, type="primary" if lang == 'en' else "secondary"):
-                st.session_state.language = 'en'
+            if st.button("🇬🇧 EN", use_container_width=True,
+                        type="primary" if st.session_state.lang == "en" else "secondary"):
+                st.session_state.lang = "en"
                 st.rerun()
         
-        st.markdown("---")
+        st.divider()
         
-        # Project info
-        st.markdown("### 📋 " + translations['project_info'])
-        st.markdown(translations['about_text'])
+        # Sprint Navigation
+        st.markdown("### 📋 Módulos")
         
-        st.markdown("---")
-        
-        # Sprint navigation
-        st.markdown("### 🎯 " + translations['sprint_navigation'])
-        
-        sprints = [
-            {"num": 1, "icon": "🏥", "key": "sprint1_title", "status": "completed"},
-            {"num": 2, "icon": "🔖", "key": "sprint2_title", "status": "completed"},
-            {"num": 3, "icon": "📝", "key": "sprint3_title", "status": "pending"},
-            {"num": 4, "icon": "💬", "key": "sprint4_title", "status": "pending"},
-        ]
-        
-        for sprint in sprints:
-            # Status indicator
-            if sprint["status"] == "completed":
-                status_icon = "✅"
-                status_text = translations['completed']
-            elif sprint["status"] == "in_progress":
-                status_icon = "🔄"
-                status_text = translations['in_progress']
+        for sprint in SPRINTS:
+            # Status badge
+            if sprint["status"] == "ready":
+                badge = "✅"
+            elif sprint["status"] == "beta":
+                badge = "🧪"
             else:
-                status_icon = "⏳"
-                status_text = translations['pending']
+                badge = "⏳"
             
             # Sprint button
-            button_label = f"{sprint['icon']} Sprint {sprint['num']}: {translations[sprint['key']]}"
-            is_selected = st.session_state.current_sprint == sprint['num']
+            is_selected = st.session_state.sprint == sprint["num"]
+            label = f"{sprint['icon']} {sprint['name']}"
             
             if st.button(
-                button_label,
-                key=f"sprint_{sprint['num']}",
+                label,
+                key=f"nav_{sprint['num']}",
                 use_container_width=True,
                 type="primary" if is_selected else "secondary"
             ):
-                st.session_state.current_sprint = sprint['num']
+                st.session_state.sprint = sprint["num"]
                 st.rerun()
             
-            # Status caption
-            st.caption(f"{status_icon} {status_text}")
+            st.caption(f"   {badge} Sprint {sprint['num']}")
         
-        st.markdown("---")
+        st.divider()
         
-        # Progress bar
-        st.markdown("### 📊 " + translations['project_progress'])
-        completed_sprints = sum(1 for s in sprints if s["status"] == "completed")
-        progress = completed_sprints / len(sprints)
-        st.progress(progress)
-        st.caption(f"{completed_sprints}/{len(sprints)} sprints {translations['completed'].lower()}")
-        
-        st.markdown("---")
+        # Progress
+        st.markdown("### 📊 Progreso")
+        completed = sum(1 for s in SPRINTS if s["status"] == "ready")
+        st.progress(completed / len(SPRINTS))
+        st.caption(f"{completed}/{len(SPRINTS)} módulos listos")
         
         # Footer
-        st.caption("🎓 Universidad Peruana Cayetano Heredia")
-        st.caption("💻 Built with Streamlit & Transformers")
+        st.divider()
+        st.caption("🎓 UPCH - Transformers en Salud")
+        st.caption("v2.0 - Enero 2026")
 
+# ============================================================================
+# MAIN CONTENT
+# ============================================================================
+
+def render_header():
+    """Render main header."""
+    col1, col2 = st.columns([3, 1])
+    
+    with col1:
+        current = SPRINTS[st.session_state.sprint - 1]
+        st.title(f"{current['icon']} {current['name']}")
+        
+        # Status indicator
+        if current["status"] == "ready":
+            st.success("✅ Módulo disponible")
+        elif current["status"] == "beta":
+            st.warning("🧪 Versión beta")
+        else:
+            st.info("⏳ En desarrollo")
+    
+    with col2:
+        st.metric("Sprint", st.session_state.sprint, delta=None)
+
+def render_sprint():
+    """Render current sprint content with lazy loading."""
+    sprint_num = st.session_state.sprint
+    lang = st.session_state.lang
+    
+    # Simple translations
+    translations = {
+        "es": {
+            "coming_soon": "Próximamente",
+            "see_notebook": "Ver notebook",
+            "results": "Resultados",
+            "abbreviations": "Abreviaturas",
+        },
+        "en": {
+            "coming_soon": "Coming soon",
+            "see_notebook": "See notebook",
+            "results": "Results",
+            "abbreviations": "Abbreviations",
+        }
+    }
+    
+    t = translations[lang]
+    
+    # Lazy load sprint pages
+    if sprint_num == 1:
+        from modules import sprint_1_triaje
+        sprint_1_triaje.render(t, lang)
+    elif sprint_num == 2:
+        from modules import sprint_2_ner
+        sprint_2_ner.render(t, lang)
+    elif sprint_num == 3:
+        from modules import sprint_3_soap
+        sprint_3_soap.render(t, lang)
+    elif sprint_num == 4:
+        from modules import sprint_4_rag
+        sprint_4_rag.render(t, lang)
+
+# ============================================================================
+# MAIN
+# ============================================================================
 
 def main():
-    """Main application logic."""
-    # Initialize session state
-    init_session_state()
-    
-    # Get current language and translations
-    lang = st.session_state.language
-    translations = TRANSLATIONS[lang]
-    
-    # Render sidebar
-    render_sidebar(translations, lang)
-    
-    # Main content
-    st.title("🏥 " + translations['app_title'])
-    st.caption(translations['app_subtitle'])
-    
-    st.markdown("---")
-    
-    # Render selected sprint
-    current_sprint = st.session_state.current_sprint
-    
-    if current_sprint == 1:
-        sprint_1_triaje.render(translations, lang)
-    elif current_sprint == 2:
-        sprint_2_ner.render(translations, lang)
-    elif current_sprint == 3:
-        sprint_3_soap.render(translations, lang)
-    elif current_sprint == 4:
-        sprint_4_rag.render(translations, lang)
-
+    """Main application."""
+    init_session()
+    render_sidebar()
+    render_header()
+    st.divider()
+    render_sprint()
 
 if __name__ == "__main__":
     main()

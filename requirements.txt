@@ -13,9 +13,20 @@ torch>=2.0.0
 spacy>=3.7.0,<3.8.0
 scispacy>=0.5.4
 
-# ChromaDB - Vector Database (for optimized NER)
+# ChromaDB - Vector Database
 chromadb>=0.4.0
 sentence-transformers>=2.2.0
+
+# RAG - LangChain
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-huggingface>=0.0.3
+
+# PDF Processing
+pypdf>=4.0.0
+
+# LoRA Adapters
+peft>=0.10.0
 
 # Progress bars
 tqdm>=4.65.0
@@ -24,3 +35,4 @@ tqdm>=4.65.0
 plotly>=5.18.0
 
 # Note: ScispaCy models must be installed separately (see setup.sh)
+

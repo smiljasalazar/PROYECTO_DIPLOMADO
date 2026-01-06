@@ -1,0 +1,33 @@
+EJEMPLO 1: Dolor torácico
+-------------------------
+Paciente masculino de 65 años acude a consulta por dolor en el pecho 
+que apareció hace 3 días. Refiere que el dolor es opresivo y empeora 
+con el esfuerzo. Tiene antecedentes de hipertensión arterial y diabetes 
+tipo 2. Actualmente toma losartán 50mg diario y metformina 850mg.
+
+Al examen físico: PA 150/95 mmHg, FC 88 lpm, FR 18 rpm, SpO2 96%.
+Auscultación cardíaca con ruidos rítmicos, sin soplos. Pulmones claros.
+ECG muestra ritmo sinusal con alteraciones inespecíficas de ST.
+
+
+EJEMPLO 2: Dolor abdominal
+--------------------------
+Paciente femenina de 45 años con dolor abdominal de 2 días de evolución.
+Localizado en hipocondrio derecho, de tipo cólico. Refiere náuseas y 
+un episodio de vómito. Sin fiebre. Última comida hace 6 horas.
+Antecedentes: litiasis biliar diagnosticada hace 2 años.
+
+Examen físico: Abdomen blando, depresible, dolor a la palpación en 
+hipocondrio derecho. Murphy positivo. No signos de irritación peritoneal.
+SV: PA 120/80, FC 78, T 36.8°C.
+
+
+EJEMPLO 3: Infección respiratoria
+---------------------------------
+Paciente de 28 años consulta por tos productiva de 5 días de evolución.
+Expectoración amarillenta. Refiere fiebre de 38.5°C en casa, odinofagia
+y malestar general. No disnea. Vacunación COVID completa.
+
+Examen: Faringe eritematosa, amígdalas hipertróficas sin exudados.
+Auscultación pulmonar: murmullo vesicular conservado, sin estertores.
+SV: PA 110/70, FC 82, FR 16, SpO2 98%, T 37.8°C.

@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "mensaje": "Tengo un dolor muy fuerte en el pecho y se me duerme el brazo izquierdo.",
+        "categoria_esperada": "Urgencia Vital (Roja)"
+    },
+    {
+        "id": 2,
+        "mensaje": "Hola, necesito saber si el doctor Martínez atiende los jueves.",
+        "categoria_esperada": "Consulta Administrativa"
+    },
+    {
+        "id": 3,
+        "mensaje": "Se me acabó la pastilla de la presión, necesito la receta para comprarla.",
+        "categoria_esperada": "Renovación de Receta"
+    },
+    {
+        "id": 4,
+        "mensaje": "Mi hijo tiene fiebre de 38 desde ayer y llora mucho, pero come bien.",
+        "categoria_esperada": "Consulta Médica No Urgente"
+    },
+    {
+        "id": 5,
+        "mensaje": "Siento una presión muy fuerte en el pecho y me falta el aire",
+        "categoria_esperada": "Urgencia Vital (Roja)"
+    },
+    {
+        "id": 6,
+        "mensaje": "Quiero cancelar mi cita de mañana, no podré asistir.",
+        "categoria_esperada": "Consulta Administrativa"
+    },
+    {
+        "id": 7,
+        "mensaje": "Llevo 3 días con diarrea y vómitos, estoy muy débil",
+        "categoria_esperada": "Consulta Médica No Urgente"
+    },
+    {
+        "id": 8,
+        "mensaje": "Necesito que me renueven el enalapril que se me terminó ayer",
+        "categoria_esperada": "Renovación de Receta"
+    }
+]
