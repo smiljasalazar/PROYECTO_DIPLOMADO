@@ -1,25 +1,41 @@
 """
 Sprint 3: Generador de Notas SOAP
 Convierte notas clínicas libres en formato estructurado SOAP.
+Usa Ollama (Llama2) para generación rápida.
 """
 
 import streamlit as st
+import requests
 
-# Lazy load
-_generator = None
 
-def get_generator():
-    """Lazy load the text generation pipeline."""
-    global _generator
-    if _generator is None:
-        with st.spinner("⏳ Cargando modelo de generación..."):
-            from transformers import pipeline
-            _generator = pipeline(
-                "text-generation",
-                model="Qwen/Qwen2.5-0.5B-Instruct",
-                device_map="auto"
-            )
-    return _generator
+def generate_with_ollama(prompt: str) -> str:
+    """Generate text using Ollama (Llama2)."""
+    try:
+        response = requests.post(
+            "http://localhost:11434/api/generate",
+            json={
+                "model": "llama2",
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": 0.3,
+                    "num_predict": 400
+                }
+            },
+            timeout=180
+        )
+        
+        if response.status_code == 200:
+            return response.json().get("response", "")
+        else:
+            return f"Error Ollama: {response.status_code}"
+            
+    except requests.exceptions.ConnectionError:
+        return "❌ Ollama no está corriendo. Ejecuta: ollama serve"
+    except requests.exceptions.ReadTimeout:
+        return "⏳ Timeout: Llama2 tardó demasiado."
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 
 # Example clinical notes
@@ -216,32 +232,26 @@ def render(translations: dict, lang: str):
     # Generate button
     if st.button("🔄 Generar Nota SOAP", type="primary", use_container_width=True):
         if clinical_note.strip():
-            with st.spinner("⏳ Generando nota SOAP..."):
-                generator = get_generator()
-                
+            with st.spinner("⏳ Generando con Llama2 (Ollama)..."):
                 prompt = create_soap_prompt(clinical_note)
                 
-                result = generator(
-                    prompt,
-                    max_new_tokens=400,
-                    temperature=0.3,
-                    do_sample=True,
-                    pad_token_id=generator.tokenizer.eos_token_id
-                )
+                # Generate with Ollama
+                soap_text = generate_with_ollama(prompt)
                 
-                generated = result[0]["generated_text"]
-                soap_text = generated.split("NOTA SOAP:")[-1].strip()
-                
-                # Parse and audit
-                sections = parse_soap(soap_text)
-                audit = audit_soap(sections)
-                
-                # Store in session
-                st.session_state.soap_result = {
-                    "sections": sections,
-                    "audit": audit,
-                    "raw": soap_text
-                }
+                # Check for errors
+                if soap_text.startswith("❌") or soap_text.startswith("⏳") or soap_text.startswith("Error"):
+                    st.error(soap_text)
+                else:
+                    # Parse and audit
+                    sections = parse_soap(soap_text)
+                    audit = audit_soap(sections)
+                    
+                    # Store in session
+                    st.session_state.soap_result = {
+                        "sections": sections,
+                        "audit": audit,
+                        "raw": soap_text
+                    }
         else:
             st.warning("⚠️ Ingresa una nota clínica")
     

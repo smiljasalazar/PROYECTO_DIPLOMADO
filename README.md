@@ -1,82 +1,126 @@
-# Asistente Clínico Inteligente y Explicable - UPCH
+# 🏥 ACIE - Asistente Clínico Inteligente con Embeddings
 
+Sistema didáctico de NLP Médico desarrollado para el curso **Transformers en Salud** de la UPCH.
 
-# Asistente Clínico Inteligente y Explicable (ACIE)
+## 📚 Módulos
 
-Proyecto docente–experimental en el que los estudiantes construyen, en 4 sprints, un **asistente clínico inteligente y explicable** usando modelos tipo Transformer y LLM, con énfasis en:
-
-- Triaje de mensajes de pacientes (Zero-Shot).
-- Estructuración de texto clínico (NER → JSON).
-- Generación responsable de notas SOAP mediante prompting avanzado.
-- Recuperación aumentada por búsqueda (RAG) sobre guías clínicas.
-- Integración en un MVP web y discusión ética / de seguridad.
-
----
-
-## Objetivo general
-
-Diseñar e implementar un prototipo funcional de asistente clínico que pueda:
-
-1. Clasificar mensajes clínicos en categorías de triaje.
-2. Extraer información clave de notas clínicas y convertirla en datos estructurados.
-3. Redactar notas SOAP con mecanismos de auto-auditoría para reducir alucinaciones.
-4. Consultar documentación clínica y responder con evidencia citada.
-5. Integrar todo en una aplicación web sencilla (Gradio/Streamlit) que sirva como base para discusión sobre IA responsable en salud.
+| Sprint | Nombre | Descripción |
+|--------|--------|-------------|
+| 1 | 🎯 Triaje Zero-Shot | Clasificación de urgencia sin entrenamiento |
+| 2 | 🔖 NER Médico | Extracción de entidades clínicas |
+| 3 | 📝 Generador SOAP | Notas clínicas estructuradas |
+| 4 | 💬 RAG Clínico | Preguntas sobre documentos médicos |
 
 ---
 
-## Objetivos específicos
+## 🚀 Instalación Rápida
 
-1. Comprender en profundidad la arquitectura Transformer y su rol en aplicaciones clínicas modernas.
-2. Implementar un clasificador Zero-Shot clínico robusto para triaje de mensajes de pacientes.
-3. Diseñar un esquema JSON clínico y un módulo de NER que convierta texto libre en datos estructurados.
-4. Orquestar LLMs para generar notas SOAP, incorporando estrategias de prompting avanzado y auto-auditoría.
-5. Construir un prototipo RAG que consulte guías/protocolos clínicos y devuelva respuestas citadas y auditables.
-6. Desplegar un MVP web que integre todos los módulos y sirva como plataforma de discusión sobre privacidad, sesgos y gobernanza de modelos.
+### Requisitos
+- Python 3.10+
+- [Ollama](https://ollama.ai) (para Sprint 4)
+- 8GB RAM mínimo
 
-Proyecto organizado por sprints para construir un asistente clínico usando Transformers y LLMs.
+### Paso 1: Clonar repositorio
+```bash
+git clone https://github.com/BryPhysic/Proyecto_T_L.git
+cd Proyecto_T_L
+```
+
+### Paso 2: Crear entorno virtual
+```bash
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+# o en Windows: .venv\Scripts\activate
+```
+
+### Paso 3: Instalar dependencias
+```bash
+pip install -r requirements.txt
+```
+
+### Paso 4: Instalar Ollama + Llama2 (para Sprint 4)
+```bash
+# macOS
+brew install ollama
+
+# Descargar modelo
+ollama pull llama2
+```
+
+### Paso 5: Ejecutar
+```bash
+streamlit run src/streamlit_app.py
+```
+
+Abre http://localhost:8501 en tu navegador.
+
+---
+
+## 📦 Modos de Uso
+
+### 🚀 Modo LITE (Recomendado para empezar)
+- ✅ **No requiere descargas adicionales**
+- ✅ Sube tus propios PDFs/TXTs
+- ✅ Funciona con Ollama local
+- Sprint 4: Solo busca en tus documentos
+
+### 📚 Modo COMPLETO (Con base de datos UMLS)
+1. Descarga `ACIE_datos_completos.zip` (~12GB) desde:
+   - [Link de Google Drive - pendiente]
+   
+2. Descomprime en la carpeta del proyecto:
+```bash
+unzip ACIE_datos_completos.zip -d Datasets/
+```
+
+3. En Sprint 4, selecciona "📚 Completo (UMLS)" para buscar también en la base de conocimiento médico.
+
+---
 
 ## 📁 Estructura del Proyecto
 
 ```
-asistente_clinico_upch/
-├── data/                  # Datos simulados (cumpliendo privacidad)
-│   ├── raw/               # Mensajes originales, PDFs de guías
-│   └── processed/         # JSONs generados por el Sprint 2
-├── notebooks/             # El "Laboratorio" (Google Colab)
-│   ├── 1_triaje_zeroshot.ipynb      # Sprint 1
-│   ├── 2_ner_estructurador.ipynb    # Sprint 2
-│   ├── 3_soap_auditor.ipynb         # Sprint 3
-│   └── 4_rag_chat.ipynb             # Sprint 4
-├── src/                   # Código modular para el MVP (Unidad 5)
-│   ├── app.py             # Entry point de Streamlit/Gradio
-│   └── utils.py           # Funciones de limpieza y carga
-└── requirements.txt       # Dependencias (transformers, langchain, gradio)
+Proyecto_T_L/
+├── src/
+│   ├── streamlit_app.py      # App principal
+│   ├── modules/              # Páginas de cada Sprint
+│   └── utils/                # Procesadores (NER, RAG, etc.)
+├── notebooks/                # Notebooks didácticos
+├── data/examples/            # Datos de ejemplo
+├── Datasets/                 # Bases de datos (no en GitHub)
+│   ├── chromadb_umls/        # Base UMLS (modo completo)
+│   └── rag_documents/        # Tus documentos
+└── requirements.txt          # Dependencias
 ```
 
-## 🎯 Sprints
+---
 
-### Sprint 1: Triaje Zero-Shot
-Clasificación de mensajes de pacientes en categorías de urgencia sin entrenamiento adicional.
+## 🔧 Solución de Problemas
 
-### Sprint 2: NER y Estructuración
-Extracción de entidades clínicas y conversión a formato JSON estructurado.
+### "Ollama no está corriendo"
+```bash
+ollama serve  # Inicia el servidor
+```
 
-### Sprint 3: Generador SOAP con Auto-auditoría
-Generación responsable de notas SOAP con mecanismos para reducir alucinaciones.
+### "No encontré información relevante"
+- Sube un documento PDF/TXT primero
+- Haz preguntas relacionadas al contenido del documento
 
-### Sprint 4: RAG sobre Guías Clínicas
-Sistema de consulta con recuperación aumentada sobre documentación médica.
+### Sprint 4 muy lento
+- La primera respuesta tarda 1-2 min (carga del modelo)
+- Las siguientes son más rápidas
+- Usa "🔍 Solo Búsqueda" si no quieres esperar
 
+---
 
-## ⚠️ Privacidad y Ética
+## 👥 Créditos
 
-Este proyecto trabaja con datos **simulados** que cumplen con estándares de privacidad. 
-Todos los datos sensibles están excluidos del control de versiones mediante `.gitignore`.
+- **Curso**: Transformers en Salud - UPCH
+- **Versión**: 2.0 - Enero 2026
+- **Autor**: BryPhysic
 
-## 📝 Notas
+---
 
-- Los notebooks están diseñados para ejecutarse en Google Colab
+## 📄 Licencia
 
-- Mantener siempre la privacidad de los datos de prueba si son reales
-
+Uso educativo - UPCH

@@ -1,31 +1,32 @@
-# Core dependencies
+# =============================================================================
+# ACIE - Asistente Clínico Inteligente con Embeddings
+# Dependencias del proyecto
+# =============================================================================
+
+# Core
 numpy>=2.0.0
 pandas>=2.0.0
+requests>=2.31.0
 
-# Streamlit
+# Streamlit - UI
 streamlit>=1.29.0
 
-# Machine Learning
+# Machine Learning - Transformers
 transformers>=4.35.0
 torch>=2.0.0
 
-# NLP - NER
+# NLP - NER médico
 spacy>=3.7.0,<3.8.0
 scispacy>=0.5.4
 
-# ChromaDB - Vector Database
+# ChromaDB - Base de datos vectorial
 chromadb>=0.4.0
 sentence-transformers>=2.2.0
-
-# RAG - LangChain
-langchain>=0.2.0
-langchain-community>=0.2.0
-langchain-huggingface>=0.0.3
 
 # PDF Processing
 pypdf>=4.0.0
 
-# LoRA Adapters
+# LoRA Adapters (para modelos fine-tuned)
 peft>=0.10.0
 
 # Progress bars
@@ -34,5 +35,14 @@ tqdm>=4.65.0
 # Visualization
 plotly>=5.18.0
 
-# Note: ScispaCy models must be installed separately (see setup.sh)
+# =============================================================================
+# MODELOS SCISPACY (instalar manualmente después de pip install)
+# =============================================================================
+# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
+# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_scibert-0.5.4.tar.gz
 
+# =============================================================================
+# OLLAMA (instalar por separado)
+# =============================================================================
+# macOS: brew install ollama
+# Modelo: ollama pull llama2
