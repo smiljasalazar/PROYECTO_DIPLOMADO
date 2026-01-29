@@ -1,0 +1,497 @@
+{
+  "metadatos": {
+    "fecha_procesamiento": "2026-01-28T22:29:49.439477",
+    "modelos_usados": [
+      "d4data/biomedical-ner-all",
+      "en_core_sci_scibert",
+      "en_ner_bc5cdr_md"
+    ],
+    "knowledge_base": "UMLS"
+  },
+  "texto_original": "\nPaciente varón de 65 años, acude a emergencia por cuadro de 3 días de evolución caracterizado por disnea de medianos esfuerzos y dolor torácico opresivo.\nAntecedentes: Hipertensión arterial diagnosticada hace 10 años y Diabetes Mellitus tipo 2.\nActualmente en tratamiento con Losartán 50mg cada 12 horas y Metformina 850mg una vez al día.\nAl examen físico: PA 150/90 mmHg, FC 95 lpm. Murmullo vesicular disminuido en bases.\nNiega alergias a medicamentos conocidos. Se descarta infarto agudo de miocardio por enzimas cardiacas negativas.\n",
+  "entidades_por_categoria": {
+    "OTRO": [
+      {
+        "texto_original": "Paciente",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          1,
+          9
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "varón",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          10,
+          15
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "acude",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          28,
+          33
+        ],
+        "contexto": {
+          "temporalidad": "pasado",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "emergencia",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          36,
+          46
+        ],
+        "umls_id": "C4442459",
+        "nombre_normalizado": "Emergencia",
+        "definicion": "Sin definición disponible",
+        "tipos_semanticos": [
+          "T007"
+        ],
+        "categoria": "OTRO",
+        "sinonimos": [],
+        "score_linking": 0.985,
+        "alternativas": [
+          {
+            "umls_id": "C5276118",
+            "nombre": "Emergencia sp.",
+            "score": 0.952
+          },
+          {
+            "umls_id": "C0013956",
+            "nombre": "Emergency Situation",
+            "score": 0.766
+          }
+        ],
+        "contexto": {
+          "temporalidad": "pasado",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "por cuadro",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          47,
+          57
+        ],
+        "contexto": {
+          "temporalidad": "pasado",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "por disnea de medianos",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          95,
+          117
+        ],
+        "contexto": {
+          "temporalidad": "antecedente",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "esfuerzos",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          118,
+          127
+        ],
+        "contexto": {
+          "temporalidad": "antecedente",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "dolor torácico",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          130,
+          144
+        ],
+        "contexto": {
+          "temporalidad": "antecedente",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "Antecedentes",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          155,
+          167
+        ],
+        "contexto": {
+          "temporalidad": "antecedente",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "Hipertensión",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          169,
+          181
+        ],
+        "contexto": {
+          "temporalidad": "antecedente",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "Losartán",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          277,
+          285
+        ],
+        "contexto": {
+          "temporalidad": "actual",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "cada",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          291,
+          295
+        ],
+        "contexto": {
+          "temporalidad": "actual",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "horas",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          299,
+          304
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "al día",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          332,
+          338
+        ],
+        "umls_id": "C0001895",
+        "nombre_normalizado": "Alabama",
+        "definicion": "A state in the southeastern region of the United States. The capital is Montgomery.",
+        "tipos_semanticos": [
+          "T083"
+        ],
+        "categoria": "OTRO",
+        "sinonimos": [
+          "alabama",
+          "AL",
+          "Alabama (geographic location)",
+          "Alabama"
+        ],
+        "score_linking": 0.97,
+        "alternativas": [
+          {
+            "umls_id": "C0002367",
+            "nombre": "aluminum",
+            "score": 0.97
+          },
+          {
+            "umls_id": "C0268381",
+            "nombre": "Primary amyloidosis",
+            "score": 0.97
+          }
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "PA",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          358,
+          360
+        ],
+        "umls_id": "C0030853",
+        "nombre_normalizado": "Pennsylvania",
+        "definicion": "State bounded on the north by New York and Lake Erie, on the east by Delaware and New Jersey, on the south by Delaware and Maryland, and on the west by Ohio and West Virginia.",
+        "tipos_semanticos": [
+          "T083"
+        ],
+        "categoria": "OTRO",
+        "sinonimos": [
+          "Pennsylvania",
+          "pennsylvania",
+          "PA",
+          "Pennsylvania (geographic location)"
+        ],
+        "score_linking": 0.97,
+        "alternativas": [
+          {
+            "umls_id": "C0439473",
+            "nombre": "newton per square metre",
+            "score": 0.97
+          },
+          {
+            "umls_id": "C1414426",
+            "nombre": "EPB42 gene",
+            "score": 0.97
+          }
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "mmHg",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          368,
+          372
+        ],
+        "umls_id": "C0439475",
+        "nombre_normalizado": "mmHg",
+        "definicion": "A non-SI unit of pressure equal to 133,332 Pa or 1.316E10-3 standard atmosphere. Use of this unit is generally deprecated by ISO and IUPAC.",
+        "tipos_semanticos": [
+          "T081"
+        ],
+        "categoria": "OTRO",
+        "sinonimos": [
+          "millimeter of mercury",
+          "millimeter of mercury (mmHg)",
+          "Millimeter of Mercury",
+          "Millimeter of mercury (qualifier value)",
+          "torr"
+        ],
+        "score_linking": 0.989,
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "FC 95",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          374,
+          379
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "Murmullo vesicular disminuido en",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          385,
+          417
+        ],
+        "contexto": {
+          "negacion": true,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "bases",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          418,
+          423
+        ],
+        "umls_id": "C0178499",
+        "nombre_normalizado": "Base",
+        "definicion": "A substance that dissociates to give hydroxide ions in aqueous solutions; a substance capable of donating a pair of electrons (to an acid) for the formation of a coordinate covalent bond; a substance whose molecule or ion can combine with a proton (hydrogen ion); a substance that combines with acids to form salts.",
+        "tipos_semanticos": [
+          "T120"
+        ],
+        "categoria": "OTRO",
+        "sinonimos": [
+          "base (chemistry)",
+          "base",
+          "Base, NOS",
+          "Basic",
+          "Base"
+        ],
+        "score_linking": 0.978,
+        "alternativas": [
+          {
+            "umls_id": "C1626935",
+            "nombre": "Unit dose - Base",
+            "score": 0.978
+          }
+        ],
+        "contexto": {
+          "negacion": true,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "Niega alergias",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          425,
+          439
+        ],
+        "contexto": {
+          "negacion": true,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "medicamentos conocidos",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          442,
+          464
+        ],
+        "contexto": {
+          "negacion": true,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "Se descarta infarto",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          466,
+          485
+        ],
+        "contexto": {
+          "negacion": true,
+          "certeza": "mencionado"
+        }
+      },
+      {
+        "texto_original": "negativas",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          527,
+          536
+        ],
+        "contexto": {
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      }
+    ],
+    "PROCEDIMIENTO": [
+      {
+        "texto_original": "diagnosticada",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          191,
+          204
+        ],
+        "umls_id": "C0011900",
+        "nombre_normalizado": "Diagnosis",
+        "definicion": "The determination of the nature of a disease or condition, or the distinguishing of one disease or condition from another. Assessment may be made through physical examination, laboratory tests, or the likes. Computerized programs may be used to enhance the decision-making process.",
+        "tipos_semanticos": [
+          "T060"
+        ],
+        "categoria": "PROCEDIMIENTO",
+        "sinonimos": [
+          "diagnosing",
+          "Diagnosis (observable entity)",
+          "Diagnostic",
+          "diagnosis",
+          "diagnoses"
+        ],
+        "score_linking": 0.797,
+        "alternativas": [
+          {
+            "umls_id": "C0348026",
+            "nombre": "Diagnostic",
+            "score": 0.797
+          }
+        ],
+        "contexto": {
+          "temporalidad": "antecedente",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      }
+    ],
+    "ENFERMEDAD": [
+      {
+        "texto_original": "Diabetes Mellitus tipo 2",
+        "tipo_ner": "ENTITY",
+        "posicion": [
+          220,
+          244
+        ],
+        "umls_id": "C0011849",
+        "nombre_normalizado": "Diabetes Mellitus",
+        "definicion": "A heterogeneous group of disorders characterized by HYPERGLYCEMIA and GLUCOSE INTOLERANCE.",
+        "tipos_semanticos": [
+          "T047"
+        ],
+        "categoria": "ENFERMEDAD",
+        "sinonimos": [
+          "Diabetes mellitus (disorder)",
+          "diabete mellitus",
+          "Diabetes NOS",
+          "diabetes mellitus",
+          "dm"
+        ],
+        "score_linking": 0.851,
+        "alternativas": [
+          {
+            "umls_id": "C0011860",
+            "nombre": "Diabetes Mellitus, Non-Insulin-Dependent",
+            "score": 0.781
+          },
+          {
+            "umls_id": "C0011878",
+            "nombre": "Diabetic Diet",
+            "score": 0.758
+          }
+        ],
+        "contexto": {
+          "temporalidad": "actual",
+          "negacion": false,
+          "certeza": "mencionado"
+        }
+      }
+    ]
+  },
+  "abreviaturas": [],
+  "estadisticas": {
+    "OTRO": 23,
+    "PROCEDIMIENTO": 1,
+    "ENFERMEDAD": 1
+  }
+}

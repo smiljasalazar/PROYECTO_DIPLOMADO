@@ -1,0 +1,51 @@
+
+GUÍA: INSUFICIENCIA CARDÍACA CONGESTIVA (ICC)
+
+FACTORES DE RIESGO:
+- Hipertensión arterial (causa principal)
+- Diabetes Mellitus
+- Enfermedad coronaria
+- Edad avanzada (>65 años)
+
+PRESENTACIÓN CLÍNICA:
+Síntomas:
+- Disnea de esfuerzo (síntoma cardinal)
+- Ortopnea
+- Disnea paroxística nocturna
+- Fatiga
+- Edema en MMII
+
+Signos:
+- Taquicardia
+- Crepitantes pulmonares
+- Ingurgitación yugular
+- Hepatomegalia
+
+DIAGNÓSTICO:
+1. Ecocardiograma (Gold standard)
+   - Evaluar FE (fracción de eyección)
+2. BNP/Pro-BNP
+   - BNP >100 pg/mL sugiere ICC
+3. Radiografía tórax
+   - Cardiomegalia, congestión pulmonar
+
+TRATAMIENTO:
+Medidas generales:
+- Restricción de sal (<2g/día)
+- Control de líquidos
+- Ejercicio moderado (cuando esté estable)
+
+Farmacológico:
+- Diuréticos (furosemida)
+- IECA/ARA-II (continuar si ya los toma)
+- ⚠️ METFORMINA: CONTRAINDICADA en ICC descompensada
+  * Riesgo de acidosis láctica
+  * Suspender temporalmente
+
+PACIENTE DIABÉTICO CON ICC:
+- Ajustar hipoglucemiantes (evitar metformina)
+- Control estricto de PA
+- Monitoreo frecuente
+
+REFERENCIA: ESC Guidelines for Heart Failure 2024
+    

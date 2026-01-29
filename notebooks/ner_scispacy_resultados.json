@@ -1,0 +1,570 @@
+{
+  "metadatos": {
+    "fecha_procesamiento": "2026-01-28T21:46:01.314052",
+    "modelos_usados": [
+      "d4data/biomedical-ner-all",
+      "en_core_sci_scibert",
+      "en_ner_bc5cdr_md"
+    ]
+  },
+  "texto_original": "\nPaciente varón de 65 años, acude a emergencia por cuadro de 3 días de evolución caracterizado por disnea de medianos esfuerzos y dolor torácico opresivo.\nAntecedentes: Hipertensión arterial diagnosticada hace 10 años y Diabetes Mellitus tipo 2.\nActualmente en tratamiento con Losartán 50mg cada 12 horas y Metformina 850mg una vez al día.\nAl examen físico: PA 150/90 mmHg, FC 95 lpm. Murmullo vesicular disminuido en bases.\nNiega alergias a medicamentos conocidos. Se descarta infarto agudo de miocardio por enzimas cardiacas negativas.\n",
+  "entidades_huggingface": [
+    {
+      "texto": "pac",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.7889999747276306,
+      "posicion": [
+        1,
+        4
+      ]
+    },
+    {
+      "texto": "65 an",
+      "tipo": "Lab_value",
+      "score": 0.9290000200271606,
+      "posicion": [
+        19,
+        24
+      ]
+    },
+    {
+      "texto": "3 dia",
+      "tipo": "Lab_value",
+      "score": 0.800000011920929,
+      "posicion": [
+        61,
+        66
+      ]
+    },
+    {
+      "texto": "##cteriza",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.6830000281333923,
+      "posicion": [
+        85,
+        92
+      ]
+    },
+    {
+      "texto": "es",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.3190000057220459,
+      "posicion": [
+        118,
+        120
+      ]
+    },
+    {
+      "texto": "##fu",
+      "tipo": "Sign_symptom",
+      "score": 0.27300000190734863,
+      "posicion": [
+        120,
+        122
+      ]
+    },
+    {
+      "texto": "##er",
+      "tipo": "Lab_value",
+      "score": 0.2150000035762787,
+      "posicion": [
+        122,
+        124
+      ]
+    },
+    {
+      "texto": "diagnostic",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.9739999771118164,
+      "posicion": [
+        191,
+        201
+      ]
+    },
+    {
+      "texto": "ha",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.703000009059906,
+      "posicion": [
+        205,
+        207
+      ]
+    },
+    {
+      "texto": "10 anos",
+      "tipo": "Lab_value",
+      "score": 0.9390000104904175,
+      "posicion": [
+        210,
+        217
+      ]
+    },
+    {
+      "texto": "diabetes mellitus",
+      "tipo": "Disease_disorder",
+      "score": 0.9919999837875366,
+      "posicion": [
+        220,
+        237
+      ]
+    },
+    {
+      "texto": "2",
+      "tipo": "Lab_value",
+      "score": 0.9909999966621399,
+      "posicion": [
+        243,
+        244
+      ]
+    },
+    {
+      "texto": "actual",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.6029999852180481,
+      "posicion": [
+        246,
+        252
+      ]
+    },
+    {
+      "texto": "##art",
+      "tipo": "Medication",
+      "score": 0.43700000643730164,
+      "posicion": [
+        280,
+        283
+      ]
+    },
+    {
+      "texto": "50",
+      "tipo": "Dosage",
+      "score": 0.5569999814033508,
+      "posicion": [
+        286,
+        288
+      ]
+    },
+    {
+      "texto": "##mg",
+      "tipo": "Lab_value",
+      "score": 0.9559999704360962,
+      "posicion": [
+        288,
+        290
+      ]
+    },
+    {
+      "texto": "12 horas",
+      "tipo": "Lab_value",
+      "score": 0.9070000052452087,
+      "posicion": [
+        296,
+        304
+      ]
+    },
+    {
+      "texto": "metform",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.7599999904632568,
+      "posicion": [
+        307,
+        314
+      ]
+    },
+    {
+      "texto": "850mg",
+      "tipo": "Lab_value",
+      "score": 0.9390000104904175,
+      "posicion": [
+        318,
+        323
+      ]
+    },
+    {
+      "texto": "95",
+      "tipo": "Lab_value",
+      "score": 1.0,
+      "posicion": [
+        377,
+        379
+      ]
+    },
+    {
+      "texto": "di",
+      "tipo": "Diagnostic_procedure",
+      "score": 0.7360000014305115,
+      "posicion": [
+        404,
+        406
+      ]
+    },
+    {
+      "texto": "des",
+      "tipo": "Coreference",
+      "score": 0.25099998712539673,
+      "posicion": [
+        469,
+        472
+      ]
+    }
+  ],
+  "entidades_scibert": [
+    {
+      "texto": "Paciente",
+      "tipo": "ENTITY",
+      "posicion": [
+        1,
+        9
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "varón",
+      "tipo": "ENTITY",
+      "posicion": [
+        10,
+        15
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "acude",
+      "tipo": "ENTITY",
+      "posicion": [
+        28,
+        33
+      ],
+      "contexto": {
+        "temporalidad": "pasado",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "emergencia",
+      "tipo": "ENTITY",
+      "posicion": [
+        36,
+        46
+      ],
+      "contexto": {
+        "temporalidad": "pasado",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "por cuadro",
+      "tipo": "ENTITY",
+      "posicion": [
+        47,
+        57
+      ],
+      "contexto": {
+        "temporalidad": "pasado",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "por disnea de medianos",
+      "tipo": "ENTITY",
+      "posicion": [
+        95,
+        117
+      ],
+      "contexto": {
+        "temporalidad": "antecedente",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "esfuerzos",
+      "tipo": "ENTITY",
+      "posicion": [
+        118,
+        127
+      ],
+      "contexto": {
+        "temporalidad": "antecedente",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "dolor torácico",
+      "tipo": "ENTITY",
+      "posicion": [
+        130,
+        144
+      ],
+      "contexto": {
+        "temporalidad": "antecedente",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Antecedentes",
+      "tipo": "ENTITY",
+      "posicion": [
+        155,
+        167
+      ],
+      "contexto": {
+        "temporalidad": "antecedente",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Hipertensión",
+      "tipo": "ENTITY",
+      "posicion": [
+        169,
+        181
+      ],
+      "contexto": {
+        "temporalidad": "antecedente",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "diagnosticada",
+      "tipo": "ENTITY",
+      "posicion": [
+        191,
+        204
+      ],
+      "contexto": {
+        "temporalidad": "antecedente",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Diabetes Mellitus tipo 2",
+      "tipo": "ENTITY",
+      "posicion": [
+        220,
+        244
+      ],
+      "contexto": {
+        "temporalidad": "actual",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Losartán",
+      "tipo": "ENTITY",
+      "posicion": [
+        277,
+        285
+      ],
+      "contexto": {
+        "temporalidad": "actual",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "cada",
+      "tipo": "ENTITY",
+      "posicion": [
+        291,
+        295
+      ],
+      "contexto": {
+        "temporalidad": "actual",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "horas",
+      "tipo": "ENTITY",
+      "posicion": [
+        299,
+        304
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "al día",
+      "tipo": "ENTITY",
+      "posicion": [
+        332,
+        338
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "PA",
+      "tipo": "ENTITY",
+      "posicion": [
+        358,
+        360
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "mmHg",
+      "tipo": "ENTITY",
+      "posicion": [
+        368,
+        372
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "FC 95",
+      "tipo": "ENTITY",
+      "posicion": [
+        374,
+        379
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Murmullo vesicular disminuido en",
+      "tipo": "ENTITY",
+      "posicion": [
+        385,
+        417
+      ],
+      "contexto": {
+        "negacion": true,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "bases",
+      "tipo": "ENTITY",
+      "posicion": [
+        418,
+        423
+      ],
+      "contexto": {
+        "negacion": true,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Niega alergias",
+      "tipo": "ENTITY",
+      "posicion": [
+        425,
+        439
+      ],
+      "contexto": {
+        "negacion": true,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "medicamentos conocidos",
+      "tipo": "ENTITY",
+      "posicion": [
+        442,
+        464
+      ],
+      "contexto": {
+        "negacion": true,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Se descarta infarto",
+      "tipo": "ENTITY",
+      "posicion": [
+        466,
+        485
+      ],
+      "contexto": {
+        "negacion": true,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "negativas",
+      "tipo": "ENTITY",
+      "posicion": [
+        527,
+        536
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    }
+  ],
+  "entidades_bc5cdr": [
+    {
+      "texto": "Diabetes Mellitus",
+      "tipo": "DISEASE",
+      "posicion": [
+        220,
+        237
+      ],
+      "contexto": {
+        "temporalidad": "actual",
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Al examen",
+      "tipo": "CHEMICAL",
+      "posicion": [
+        340,
+        349
+      ],
+      "contexto": {
+        "negacion": false,
+        "certeza": "mencionado"
+      }
+    },
+    {
+      "texto": "Se",
+      "tipo": "CHEMICAL",
+      "posicion": [
+        466,
+        468
+      ],
+      "contexto": {
+        "negacion": true,
+        "certeza": "mencionado"
+      }
+    }
+  ],
+  "abreviaturas": [],
+  "estadisticas": {
+    "total_hf": 22,
+    "total_scibert": 25,
+    "total_bc5cdr": 3
+  }
+}

@@ -1,0 +1,38 @@
+
+GUÍA CLÍNICA: DIABETES MELLITUS TIPO 2
+
+DIAGNÓSTICO:
+- Glucosa en ayunas ≥126 mg/dL (7.0 mmol/L)
+- HbA1c ≥6.5%
+- Glucosa aleatoria ≥200 mg/dL con síntomas
+
+COMPLICACIONES COMUNES:
+1. Cardiovasculares (IAM, ICC)
+   - DM2 aumenta 2-4x riesgo cardiovascular
+   - Asociación frecuente con hipertensión arterial
+   
+2. Nefropatía diabética
+3. Retinopatía
+4. Neuropatía
+
+TRATAMIENTO FARMACOLÓGICO:
+Primera línea: Metformina 500-850mg
+- Contraindicaciones: ICC descompensada, insuficiencia renal
+- Efectos adversos: Intolerancia gastrointestinal, acidosis láctica (rara)
+
+HIPERTENSIÓN EN DIABÉTICOS:
+Objetivo: PA <140/90 mmHg
+Fármacos preferidos:
+- IECA (Enalapril, Lisinopril)
+- ARA-II (Losartán, Valsartán)
+  * Losartán 50-100mg/día
+  * Nefroprotector
+  * Bien tolerado en diabéticos
+
+SÍNTOMAS DE ALARMA:
+- Disnea súbita: considerar ICC (especialmente si DM2 + HTA)
+- Dolor torácico: IAM silente común en diabéticos
+- Edema en miembros inferiores: ICC o nefropatía
+
+REFERENCIA: Adaptado de ADA Standards of Medical Care in Diabetes 2024
+    
